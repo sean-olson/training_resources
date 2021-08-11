@@ -1,0 +1,1842 @@
+
+
+-----
+
+01-02
+
+-----
+
+npm install -g @angular/cli  
+
+
+
+
+
+-----
+
+01-03
+
+-----
+
+cd C:\Users\Joseph Labrecque\Desktop\Exercise Files
+
+ng new AngularAnimation 
+
+
+
+
+
+-----
+
+01-05
+
+-----
+
+ng serve --open
+
+
+
+
+
+-----
+
+02-01
+
+-----
+
+app.component:
+
+import { Component } from '@angular/core';
+
+
+
+@Component({
+
+  selector: 'app-root',
+
+  template: `
+
+        <p>Angular Animations</p>
+
+    `,
+
+    styles: [``]
+
+})
+
+export class AppComponent {}
+
+
+
+
+
+-----
+
+02-02
+
+-----
+
+app.module: 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+BrowserAnimationsModule,
+
+
+
+
+
+-----
+
+02-03
+
+-----
+
+index.html:
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+
+app.component:
+
+<nav class="navbar navbar-toggleable-sm fixed-top navbar-inverse mb-4" style="background-color:#5c2509;">
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+
+                    data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
+
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <a class="navbar-brand" href="#">Angular Animations</a>
+
+            <div class="collapse navbar-collapse" id="main-nav">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item"> 
+
+                        <a class="nav-link">Home</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+
+
+styles.css:
+
+body {
+
+    background-color: #292929;
+
+    padding:2rem;
+
+    color:#cccccc;
+
+    margin-top:44px;
+
+}
+
+hr {
+
+    border-top: 1px solid rgba(107, 107, 107, 1);
+
+}
+
+
+
+
+
+-----
+
+02-04
+
+-----
+
+
+
+general component snippet:
+
+import { Component } from '@angular/core';
+
+
+
+@Component({
+
+  template: ``,
+
+  styles: [``]
+
+})
+
+export class MyComponent {}
+
+
+
+
+
+routes/home.component:
+
+<h1>Project Home</h1>
+
+      <div class="container-fluid">
+
+          <div class="row">
+
+              <div class="col-12">
+
+                  <p class="lead">This is a project demonstrating the use of animations in Angular!</p>
+
+                  <p>Choose from the selections in the navigation above...</p>
+
+              </div>
+
+          </div>
+
+      </div>
+
+
+
+routes/basic.component:
+
+<h1>Animation Basics</h1>
+
+      <div class="container-fluid">
+
+          <div class="row">
+
+              <div class="col-5"></div>
+
+              <div class="col-7"></div>
+
+          </div>
+
+      </div>
+
+
+
+routes/contained.component: 
+
+<h1>Self-Contained Animation</h1>
+
+      <div class="container-fluid">
+
+          <div class="row">
+
+              <div class="col-12"></div>
+
+          </div>
+
+      </div>
+
+
+
+routes/advanced.component:
+
+<h1>Advanced Concepts</h1>
+
+        <div class="container-fluid">
+
+            <div class="row align-items-center">
+
+                <div class="col-12">
+
+                    <div></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+-----
+
+02-05
+
+-----
+
+app.module:
+
+import { RouterModule, Routes } from '@angular/router';
+
+
+
+import { HomeComponent } from './routes/home.component';
+
+import { BasicComponent } from './routes/basic.component';
+
+import { ContainedComponent } from './routes/contained.component';
+
+import { AdvancedComponent } from './routes/advanced.component';
+
+
+
+const animationRoutes:Routes = [
+
+  {
+
+    path: 'animation-home',
+
+    component: HomeComponent
+
+  },
+
+  {
+
+    path: 'animation-basics',
+
+    component: BasicComponent
+
+  },
+
+  {
+
+    path: 'animation-contained',
+
+    component: ContainedComponent
+
+  },
+
+  {
+
+    path: 'animation-advanced',
+
+    component: AdvancedComponent
+
+  },
+
+  {
+
+    path: '',
+
+    redirectTo: '/animation-home',
+
+    pathMatch: 'full'
+
+  }
+
+];
+
+
+
+HomeComponent,
+
+    BasicComponent,
+
+    ContainedComponent,
+
+    AdvancedComponent
+
+
+
+RouterModule.forRoot(animationRoutes),
+
+
+
+app.component:
+
+<li class="nav-item"> 
+
+                        <a class="nav-link" routerLink="/animation-home" routerLinkActive="active">Home</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/animation-basics" routerLinkActive="active">Basics</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/animation-contained" routerLinkActive="active">Contained</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" routerLink="/animation-advanced" routerLinkActive="active">Advanced</a>
+
+                    </li>
+
+
+
+
+
+<div class="page">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+
+
+
+
+
+
+-----
+
+03-01
+
+-----
+
+animbox.component: 
+
+import { Component } from '@angular/core';
+
+
+
+@Component({
+
+  selector: 'animbox',
+
+  template: `<div class="mybox mx-auto"></div>`,
+
+  styles: [`
+
+    .mybox {
+
+        background-color: #47748f;
+
+        width: 200px;
+
+        height: 200px;
+
+        border-radius: 6px;
+
+        margin: 6rem;
+
+    }
+
+  `]
+
+})
+
+export class AnimboxComponent {}
+
+
+
+
+
+app.module:
+
+import { AnimboxComponent } from './animbox.component';
+
+
+
+basic.component:
+
+<animbox></animbox>
+
+
+
+
+
+-----
+
+03-02
+
+-----
+
+basic.component:
+
+<div class="btn-group-vertical btn-block" style="margin-top:1rem;">
+
+    <a (click)="setState('original')" class="btn btn-primary active">Return to Original</a>
+
+    <a (click)="setState('basic')" class="btn btn-primary">Animation</a>
+
+</div>
+
+
+
+switchstate = 'original';
+
+  setState(state) {
+
+    this.switchstate = state;
+
+    console.log(state);
+
+  }
+
+
+
+
+
+-----
+
+03-03
+
+-----
+
+basic.component:
+
+<animbox [currentState]="switchstate"></animbox>
+
+
+
+animbox.component:
+
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
+@Input() currentState;
+
+
+
+<div class="mybox mx-auto" [@changeState]="currentState"></div>
+
+        
+
+animations: [
+
+        trigger('changeState', [
+
+            state('original', style({
+
+                backgroundColor: '#47748f',
+
+                transform: 'scale(1)'
+
+            })),
+
+            state('basic', style({
+
+                backgroundColor: '#440000',
+
+                transform: 'scale(2)'
+
+            })),
+
+            transition('* => basic', animate('800ms')),
+
+            transition('* => original', animate('200ms'))
+
+        ])
+
+]
+
+
+
+
+
+-----
+
+03-04
+
+-----
+
+basic.component:
+
+<a (click)="setState('delaying')" class="btn btn-primary">Animation with Delay</a>
+
+<a (click)="setState('easing')" class="btn btn-primary">Animation with Ease</a>
+
+
+
+animbox.compnent:
+
+state('delaying', style({
+
+                backgroundColor: '#812170',
+
+                transform: 'scale(1.6)'
+
+            })),
+
+            state('easing', style({
+
+                backgroundColor: '#985b00',
+
+                transform: 'scale(2.2)'
+
+            })),
+
+            
+
+
+
+transition('* => delaying', animate('800ms 1200ms ease-out')),
+
+transition('* => easing', animate('800ms ease-in-out')),
+
+
+
+
+
+-----
+
+03-05
+
+-----
+
+basic.component:
+
+<a (click)="setState('stepped')" class="btn btn-primary">Stepped Animation</a>
+
+
+
+animbox.compnent:
+
+import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
+
+
+
+state('stepped', style({
+
+                backgroundColor: '#549a76',
+
+                transform: 'scale(1)'
+
+            })),
+
+
+
+transition('* => stepped', [
+
+                animate('1000ms ease-in-out', keyframes([
+
+                    style({backgroundColor: '#dd9344', transform: 'scale(1.4)', offset: 0.2}),
+
+                    style({backgroundColor: '#5c2346', transform: 'scale(0.8)', offset: 0.4}),
+
+                    style({backgroundColor: '#1b1b1b', transform: 'scale(1.2)', offset: 0.7}),
+
+                    style({backgroundColor: '#549a76', transform: 'scale(1)', offset: 0.9})
+
+                ]))
+
+            ]),
+
+
+
+                      
+
+
+
+-----
+
+03-06
+
+-----
+
+basic.component:
+
+<a (click)="setState('parallel')" class="btn btn-primary">Parallel Animation</a>
+
+
+
+animbox.compnent:
+
+import { trigger, state, style, animate, transition, keyframes, group } from '@angular/animations';
+
+
+
+state('parallel', style({
+
+                backgroundColor: '#065e65',
+
+                transform: 'scale(0.4)'
+
+            })),
+
+
+
+transition('* => parallel', [
+
+                group([
+
+                    animate('1000ms ease-out', style({
+
+                        backgroundColor: '#065e65'
+
+                    })),
+
+                    animate('2000ms ease-out', style({
+
+                        transform: 'scale(1.4)'
+
+                    }))
+
+                ])
+
+            ]),
+
+
+
+
+
+-----
+
+03-07
+
+-----
+
+animbox.component:
+
+<div class="mybox mx-auto" [@changeState]="currentState" (@changeState.start)="animationBegin($event)" (@changeState.done)="animationEnd($event)"></div>
+
+    <div class="msgbox mx-auto">{{msg}}</div>
+
+
+
+msg = "rest";
+
+    animationBegin(e) {
+
+        this.msg = e.phaseName + ": " + e.fromState + " => " + e.toState + " [" + e.totalTime + "]";
+
+    }
+
+    animationEnd(e) {
+
+        this.msg = e.phaseName + ": " + e.fromState + " => " + e.toState + " [" + e.totalTime + "]";
+
+    }
+
+
+
+.msgbox {
+
+                margin: 2rem;
+
+                padding-top:2rem;
+
+                font-size: 1.8rem;
+
+                text-align: center;
+
+            }
+
+
+
+
+
+-----
+
+04-01
+
+-----
+
+
+
+mouse.component:
+
+import { Component } from '@angular/core';
+
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
+@Component({
+
+  selector: 'mouse',
+
+  template: `<div class="mymouse mx-auto"></div>`,
+
+  styles: [`
+
+    .mymouse {
+
+        background-color: #5c8f52;
+
+        width: 200px;
+
+        height: 200px;
+
+        border-radius: 200px;
+
+        margin: 6rem;
+
+    }
+
+  `]
+
+})
+
+export class MouseComponent {}
+
+
+
+
+
+app.module:
+
+import { MouseComponent } from './mouse.component';
+
+
+
+contained.component:
+
+<mouse></mouse>
+
+
+
+mouse.component:
+
+currentState = "rest";
+
+    setMouse(state) {
+
+        this.currentState = state;
+
+    }
+
+
+
+<div class="mymouse mx-auto" (mouseenter)="setMouse('hover')" (mousedown)="setMouse('press')" (mouseleave)="setMouse('rest')" [@changeState]="currentState"></div>
+
+
+
+animations: [
+
+        trigger('changeState', [
+
+            state('rest', style({
+
+                transform: 'scale(1)'
+
+            })),
+
+            state('hover',   style({
+
+                transform: 'scale(1.2)'
+
+            })),
+
+            state('press',   style({
+
+                transform: 'scale(1.2)',
+
+                backgroundColor: '#8f5a7a'
+
+            })),
+
+            transition('rest => hover', animate('400ms ease-in')),
+
+            transition('hover => rest', animate('200ms ease-out')),
+
+            transition('hover => press', animate('400ms ease-in')),
+
+            transition('press => rest', animate('200ms ease-out'))
+
+        ])
+
+    ]
+
+
+
+
+
+
+
+
+
+
+
+-----
+
+04-02
+
+-----
+
+animations:
+
+import { animate, animation, style } from '@angular/animations';
+
+
+
+export var fadeAnimation = animation([
+
+    style({
+
+        opacity: "0"
+
+    }),
+
+    animate("800ms 300ms ease-in-out", style({
+
+        opacity: "1"
+
+    }))
+
+])
+
+
+
+fadeblock.component:
+
+import { Component } from '@angular/core';
+
+import { trigger, state, style, animate, transition, useAnimation } from '@angular/animations';
+
+import { fadeAnimation } from './animations';
+
+
+
+@Component({
+
+    selector: 'fadeblock',
+
+    template: `
+
+        <div class="fadeBlock mx-auto" [@changeState]="currentState"></div>
+
+    `,
+
+    styles: [
+
+            `
+
+            .fadeBlock {
+
+                background-color: #ec971f;
+
+                width: 600px;
+
+                height: 300px;
+
+                border-radius: 4px;
+
+                margin: 5rem;
+
+                opacity: 1;
+
+            }
+
+        `
+
+    ],
+
+    animations: [
+
+        trigger('changeState', [
+
+            transition('void => *', [
+
+                useAnimation(fadeAnimation)
+
+            ])
+
+        ])
+
+    ]
+
+})
+
+
+
+export class FadeBlockComponent {}
+
+
+
+app.module:
+
+import { FadeBlockComponent } from './fadeblock.component';
+
+
+
+FadeBlockComponent
+
+
+
+advanced.component:
+
+<fadeblock></fadeblock>
+
+
+
+
+
+-----
+
+04-03
+
+-----
+
+animations:
+
+export var fadeAnimation = animation([
+
+    style({
+
+        opacity: "{{ from }}"
+
+    }),
+
+    animate("{{time}} {{delay}} ease-in-out", style({
+
+        opacity: "{{ to }}"
+
+    }))
+
+])
+
+
+
+fadeblock.component:
+
+trigger('changeState', [
+
+            transition('void => *', [
+
+                useAnimation(fadeAnimation, {
+
+                    params: {
+
+                        delay: '3000ms',
+
+                        from: 0,
+
+                        to: 1,
+
+                        time: '1s'
+
+                    }
+
+                })
+
+            ])
+
+        ])
+
+
+
+
+
+-----
+
+04-04
+
+-----
+
+app.module:
+
+const animationRoutes:Routes = [
+
+  {
+
+    path: 'animation-home',
+
+    component: HomeComponent,
+
+    data: {
+
+      animation: {
+
+        value: 'home',
+
+      }
+
+    }
+
+  },
+
+  {
+
+    path: 'animation-basics',
+
+    component: BasicComponent,
+
+    data: {
+
+      animation: {
+
+        value: 'basic',
+
+      }
+
+    }
+
+  },
+
+  {
+
+    path: 'animation-contained',
+
+    component: ContainedComponent,
+
+    data: {
+
+      animation: {
+
+        value: 'contained',
+
+      }
+
+    }
+
+  },
+
+  {
+
+    path: 'animation-advanced',
+
+    component: AdvancedComponent,
+
+    data: {
+
+      animation: {
+
+        value: 'advanced',
+
+      }
+
+    }
+
+  },
+
+  {
+
+    path: '',
+
+    redirectTo: '/animation-home',
+
+    pathMatch: 'full',
+
+    data: {
+
+      animation: {
+
+        value: 'home',
+
+      }
+
+    }
+
+  }
+
+];
+
+
+
+animations:
+
+export var slideAnimation = animation([
+
+    style({ opacity: 0, position: 'absolute', left: 0, right: 0, transform: 'translate3d(-100%,0,0)' }),
+
+    animate('400ms ease-in-out', style({ opacity: 1, transform: 'translate3d(0%,0,0)' })),
+
+])
+
+
+
+app.component:
+
+import { Component, ViewEncapsulation } from '@angular/core';
+
+import { trigger, transition } from '@angular/animations';
+
+import { slideAnimation } from './animations';
+
+
+
+<div class="page" [@routerAnimations]="prepareRouteTransition(outlet)">
+
+            <router-outlet #outlet="outlet"></router-outlet>
+
+        </div>
+
+
+
+encapsulation: ViewEncapsulation.None,
+
+    animations: [
+
+        trigger('routerAnimations', [
+
+            transition('* => *', slideAnimation)
+
+        ])
+
+    ]
+
+
+
+prepareRouteTransition(outlet) {
+
+        const animation = outlet.activatedRouteData['animation'] || {};
+
+        return animation['value'] || null;
+
+    }
+
+
+
+
+
+fadeblock.component:
+
+(invert opacity values to fade OUT)
+
+
+
+
+
+-----
+
+04-05
+
+-----
+
+advanced.component:
+
+import { trigger, state, style, animate, transition, query } from '@angular/animations';
+
+
+
+.spoon-block {
+
+            float:left;
+
+            width:22%;
+
+            height:140px;
+
+            background-color: antiquewhite;
+
+            color: #440000;
+
+            margin: 4px;
+
+            border-radius: 4px;
+
+            display:flex;
+
+            align-items:center;
+
+            display:block;
+
+        }
+
+
+
+spoons = [
+
+            { id: 1, name:'Absinthe' },
+
+            { id: 2, name:'Bouillon' },
+
+            { id: 5, name:'Caviar' },
+
+            { id: 3, name:'Coffee' },
+
+            { id: 4, name:'Dessert' },
+
+            { id: 5, name:'Egg' },
+
+            { id: 6, name:'Horn' },
+
+            { id: 7, name:'Iced Tea' },
+
+            { id: 8, name:'Marrow' },
+
+            { id: 9, name:'Melon' },
+
+            { id: 10, name:'Parfait' },
+
+            { id: 11, name:'Salt' },
+
+            { id: 12, name:'Saucier' },
+
+            { id: 13, name:'Soup' }
+
+        ]
+
+
+
+<ul *ngFor="let spoon of spoons">
+
+    <li class="spoon-block d-flex justify-content-center">{{spoon.name}}</li>
+
+</ul>
+
+
+
+
+
+animations: [
+
+        trigger('spoonAnimation', [
+
+            transition('* => *', [
+
+                query(':enter', style({ opacity: 0 }), { optional: true }),
+
+                query(':enter', [
+
+                    animate('1s', style({ opacity: 1 }))
+
+                ], { optional: true })
+
+            ])
+
+        ])
+
+    ],
+
+
+
+
+
+<div [@spoonAnimation]="spoons.length">
+    <ul *ngFor="let spoon of spoons">
+        <li class="spoon-block d-flex justify-content-center">{{spoon.name}}</li>
+    </ul>
+</div>
+
+
+
+
+
+<hr/>
+
+<button class="btn btn-primary" (click)="showSpoons()">Show Spoons</button>
+
+
+
+spoons = []
+
+    showSpoons() {
+
+        this.spoons = [ // previously defined spoon data ]
+
+    }
+
+
+
+
+
+
+
+
+
+-----
+
+04-06
+
+-----
+
+add stagger to import
+
+
+
+advanced.component:
+
+query(':enter', stagger('100ms', [
+
+                    animate('1s', style({ opacity: 1 }))
+
+                ]), { optional: true })
+
+
+
+
+
+
+
+-----
+
+05-02
+
+-----
+
+package.json:
+
+"@angular/animations": "^4.2.0", 
+
+
+
+cli:
+
+npm install --save-dev @angular/cli@latest
+
+npm install
+
+
+
+app.module:
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+BrowserAnimationsModule
+
+
+
+
+
+-----
+
+05-03
+
+-----
+
+styles.css: 
+
+(remove fader + fadeout styles)
+
+
+
+app.component:
+
+(remove fader and fadeout classes and logic)
+
+
+
+
+
+-----
+
+05-04
+
+-----
+
+videotitle.component: 
+
+import { Component, Input } from '@angular/core';
+
+
+
+@Component({
+
+    selector: 'video-title',
+
+    template: `
+
+        <div>
+
+            <ng-content></ng-content>
+
+        </div>
+
+    `,
+
+    styles: [
+
+            `div {
+
+            position: absolute;
+
+            top:0px;
+
+            left:0px;
+
+            font-size: 1.3em;
+
+            color: whitesmoke;
+
+            width:100%;
+
+            margin:5px;
+
+            margin-left:10px;
+
+            text-shadow: 1px 1px #333333;
+
+        }
+
+        `
+
+    ]
+
+})
+
+export class VideotitleComponent {
+
+    @Input() isHidden:string = 'false';
+
+}
+
+
+
+
+
+playoverlay.component: 
+
+import { Component, Input } from '@angular/core';
+
+
+
+@Component({
+
+    selector: 'play-overlay',
+
+    template: `
+
+    <div>
+
+        <i class="fa fa-play"></i>
+
+    </div>
+
+    `,
+
+    styles: [
+
+        `div {
+
+            background-color: rgba(0, 0, 0, 0.8);
+
+            width:120px;
+
+            height:100px;
+
+            font-size: 3.2em;
+
+            cursor: pointer;
+
+            border-radius: 6px;
+
+            text-align: center;
+
+            position:absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            margin-right: -50%;
+
+            transform: translate(-50%, -50%);
+
+        }
+
+        .fa {
+
+            display: block;
+
+            margin-top: 1.5rem;
+
+        }
+
+        `
+
+    ]
+
+})
+
+export class PlayOverlayComponent {
+
+    @Input() isHidden:string = 'false';
+
+}
+
+
+
+
+
+-----
+
+05-05
+
+-----
+
+video.service: 
+
+checkHidden = () => {
+
+      var isHidden:string = "false";
+
+      if(this.isPlaying) {
+
+          isHidden = "true";
+
+      }else{
+
+          isHidden = "false";
+
+      }
+
+      return isHidden;
+
+  };
+
+
+
+
+
+(change)
+
+public showDetails:string = "false";
+
+
+
+this.showDetails = 'false';
+
+
+
+details() {
+
+      if(this.showDetails == "false"){
+
+          this.showDetails = "true";
+
+      }else{
+
+          this.showDetails = "false";
+
+      }
+
+  };
+
+
+
+
+
+app.module:
+
+import { PlayOverlayComponent } from './playoverlay.component';
+
+import { VideoTitleComponent } from './videotitle.component';
+
+
+
+app.component:
+
+(swap out old elements with new components)
+
+<play-overlay (click)="videoService.playVideo()"></play-overlay>
+
+<video-title>{{videoService.currentTitle}}</video-title>
+
+<video-options style="display:none;"></video-options>
+
+
+
+
+
+-----
+
+05-06
+
+-----
+
+videotitle.component:
+
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
+<div [@hiddenChanged]="isHidden">
+
+            <ng-content></ng-content>
+
+        </div>
+
+
+
+animations: [
+
+        trigger('hiddenChanged', [
+
+            state('false', style({
+
+                opacity: 1
+
+            })),
+
+            state('true', style({
+
+                opacity: 0
+
+            })),
+
+            transition('true => false', animate('100ms ease-out')),
+
+            transition('false => true', animate('800ms ease-out')),
+
+            transition('void => *', [
+
+                animate(1000, style({opacity:1}))
+
+            ])
+
+        ])
+
+    ]
+
+
+
+app.component:
+
+(add to video title node)
+
+[isHidden]="videoService.checkHidden()"
+
+
+
+
+
+-----
+
+05-07
+
+-----
+
+playoverlay.component:
+
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
+<div [@hiddenChanged]="isHidden">
+
+        <i class="fa fa-play"></i>
+
+    </div>
+
+
+
+animations: [
+
+        trigger('hiddenChanged', [
+
+            state('false', style({
+
+                opacity: 1,
+
+                transform: 'translate(-50%, -50%) scale(1)',
+
+                backgroundColor: 'rgba(0, 0, 0, 0.8)'
+
+            })),
+
+            state('true', style({
+
+                opacity: 0,
+
+                transform: 'translate(-50%, -50%) scale(2)',
+
+                backgroundColor: 'rgba(81, 7, 0, 0.8)'
+
+            })),
+
+            transition('true => false', animate('100ms ease-out')),
+
+            transition('false => true', animate('800ms ease-out')),
+
+            transition('void => *', [
+
+                animate(1000, style({opacity:1}))
+
+            ])
+
+        ])
+
+    ]
+
+
+
+app.component:
+
+(add to play overlay node)
+
+[isHidden]="videoService.checkHidden()"
+
+
+
+
+
+-----
+
+05-08
+
+-----
+
+options.component:
+
+import { Component, Input } from '@angular/core';
+
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
+
+
+<div [@hiddenChanged]="isHidden" id="VideoOptions" class="card">
+
+
+
+animations: [
+
+        trigger('hiddenChanged', [
+
+            state('true', style({
+
+                opacity: 1,
+
+                transform: 'translateX(0%)'
+
+            })),
+
+            state('false', style({
+
+                opacity: 0,
+
+                transform: 'translateX(100%)'
+
+            })),
+
+            transition('false => true', animate('100ms ease-out')),
+
+            transition('true => false', animate('400ms ease-in'))
+
+        ])
+
+    ]
+
+
+
+@Input() isHidden:string = 'true';
+
+
+
+app.component:
+
+<video-options [isHidden]="videoService.showDetails"></video-options>
+
+
+
+
+
+-----
+
+06-0
+
+-----
+
+
+
+ng build --prod
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS: Introduction 2</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        legend {
+            font-family: sans-serif;
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-app="" data-ng-init="lastName='Olson'">
+    <p>Name: <input type="text" ng-model="name"></p>
+    <p ng-bind="name"></p>
+    <legend>As you have already seen, AngularJS directives are HTML attributes with an ng prefix. The ng-init directive
+        initializes AngularJS application variables.
+    </legend>
+    <p>The last name is <span data-ng-bind="lastName"></span></p>
+    <legend>AngularJS expressions are written inside double braces: {{ expression }}. AngularJS will "output" data
+        exactly
+        where the expression is written:
+    </legend>
+    <p>My first expression: {{ 5 + 5 }}</p>
+    <legend>AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</legend>
+    <p>{{name}}</p>
+
+</div>
+
+</body>
+</html>

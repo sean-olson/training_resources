@@ -1,0 +1,36 @@
+<label for="">Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<!-- <p>{{serverName}}</p> -->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{serverCreationStatus}}</p> -->
+<p *ngIf="serverCreated">Server was created, and the server name is {{serverName}}</p>
+
+<!-- 
+    ngIf / Else EXAMPLE
+    <p *ngIf="serverCreated; else noServer">Server was created, and the server name is {{serverName}}</p>
+    <ng-template #noServer >
+        <p>No server was created.</p>
+    </ng-template> 
+-->
+
+<hr>
+<app-server *ngFor="let server of servers"></app-server>
+
+<!-- 
+    EXERCISE 2
+    <hr>
+    <input type="text" class="form-control" [(ngModel)]="userName">
+    <p>{{userName}}</p>
+    <button class="btn btn-primary" (click)="onClearUserName()" [disabled]="userName === ''">Clear User Name</button> 
+-->
+
+<!-- EXERCISE 3 -->
+<button class="btn btn-primary" (click)="toggleVisibility()">Display Details</button>
+<p [ngStyle]="{'display':isVisible()}">SECRET MESSAGE: Drink more Ovaltine</p>
+<h5>Display Log</h5>
+<p *ngFor="let log of showLog; let i = index;" [ngClass]="{'over-five': i >= 4}">{{log}}</p>
+

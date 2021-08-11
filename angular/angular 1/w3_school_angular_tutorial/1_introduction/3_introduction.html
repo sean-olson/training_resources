@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS: Introduction 3</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        legend {
+            font-family: sans-serif;
+            color: cadetblue;
+            margin: 20px 0;;
+        }
+
+    </style>
+</head>
+<body>
+<legend>AngularJS <strong>modules</strong> define AngularJS applications.  AngularJS <strong>controllers</strong> control
+    AngularJS applications.  The <strong>ng-app</strong> directive defines the application, the <strong>ng-controller</strong> directive defines the controller.</legend>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    First Name: <input type="text" ng-model="firstName"><br>
+    Last Name: <input type="text" ng-model="lastName"><br>
+    <br>
+    Full Name: {{firstName + " " + lastName}}
+
+    <legend>AngularJS modules define applications:</legend>
+    <pre><code>
+        var app = angular.module('myApp', []);
+    </code></pre>
+    <legend>AngularJS controllers control applications:</legend>
+    <pre><code>
+        app.controller('myCtrl', function($scope) {
+        $scope.firstName= "John";
+        $scope.lastName= "Doe";
+        });
+    </code></pre>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.firstName= "John";
+        $scope.lastName= "Doe";
+    });
+</script>
+
+</body>
+</html>

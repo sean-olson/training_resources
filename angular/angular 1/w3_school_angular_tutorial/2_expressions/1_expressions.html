@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS:</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #303030;
+            letter-spacing: .05em;
+            line-height: 1.6em;
+        }
+
+        legend {
+            font-family: sans-serif;
+            color: cadetblue;
+            margin: 20px 0;;
+        }
+
+        h1, h2, h3 {
+            font-family: sans-serif;
+            color: cadetblue;
+            margin: 20px 0;
+        }
+
+        pre, code{
+            margin: 0;
+        }
+        .text {
+            font-family: sans-serif;
+            color: cadetblue;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>AngularJS Expressions</h1>
+
+<p class="text">AngularJS binds data to HTML using <strong>Expressions</strong>.</p>
+<ul>
+    <li>AngularJS expressions can be written inside double braces: <code>{{ expression }}</code>.</li>
+    <li>AngularJS expressions can also be written inside a directive: <code>ng-bind="expression"</code>.</li>
+    <li>AngularJS will resolve the expression, and return the result exactly where the expression is written.</li>
+    <li><strong>AngularJS expressions</strong> are much like <strong>JavaScript expressions</strong>: They can
+        contain literals, operators, and variables.
+    </li>
+</ul>
+
+<h3>Examples</h3>
+<pre><code>
+    &lt;div ng-app=""&gt;
+        My first expression: {{ 5 + 5 }}
+    &lt;/div&gt;
+</code></pre>
+
+<pre><code></code></pre>
+<pre><code></code></pre>
+
+</body>
+</html>

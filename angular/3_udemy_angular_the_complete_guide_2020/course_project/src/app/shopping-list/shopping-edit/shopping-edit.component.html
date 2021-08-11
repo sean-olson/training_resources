@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form>
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="name">Name
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="form-control"
+                            #nameInput />
+                    </label>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="amount">Amount
+                        <input 
+                            type="number" 
+                            id="amount" 
+                            class="form-control"
+                            #amountInput />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success" (click)="addIngredient()">Add</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

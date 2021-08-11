@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Property Binding Assignment</h1>
+      <app-game-control (cntStopped)="onCountStopped($event)" (cntStarted)="onCountStarted()"></app-game-control>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="count-item" *ngFor="let count_item of countArray">
+          <app-odd *ngIf="count_item % 2 === 1" [value]="count_item"></app-odd>
+          <app-even *ngIf="count_item % 2 === 0" [value]="count_item"></app-even>
+      </div>
+    </div>
+  </div>
+</div>
+

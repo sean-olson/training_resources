@@ -1,0 +1,18 @@
+button{
+    height: 30px;
+    width: 120px;
+}
+
+.snippet{
+    width: 80%;
+    margin: 10px 10%;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+.snippet h1{
+    font-size: 1.5em;
+    font-weight: 200;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1B607F;
+}

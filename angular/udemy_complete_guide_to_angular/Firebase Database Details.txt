@@ -1,0 +1,5 @@
+Firebase Database Details
+
+PROJECT NAME: udemy-angular
+PROJECT ID: udemy-angular-8c820
+URL: https://udemy-angular-8c820.firebaseio.com/
