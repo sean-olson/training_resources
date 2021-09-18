@@ -29,6 +29,7 @@ packages/scripts/*.xlsx
 
 # secrets
 .env*
+.secrets
 
 # logs
 *.log*
