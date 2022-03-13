@@ -150,6 +150,45 @@ const Mutation = new GraphQLObjectType({
                 return user.save()
             }
         },
+        updateUser: {
+            type: UserType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type: new GraphQLNonNull(GraphQLInt) },
+                instrument: { type: new GraphQLNonNull(GraphQLString) },                
+            },
+            resolve: (parent, args) => {
+                return User.findByIdAndUpdate(
+                    args.id, 
+                    { 
+                        $set: {
+                            name: args.name,
+                            age: args.age,
+                            instrument: args.instrument,
+                        }
+                    },
+                    { new: true } // send back the updated type
+                )
+            },
+        },
+        removeUser: {
+            type: UserType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve: async (parent, args) => {
+                try {
+                    const filter = { user_id: args.id }
+                    await Hobby.deleteMany(filter)
+                    await Post.deleteMany(filter)
+                    let removed_user = User.findByIdAndRemove(args.id)
+                    return removed_user
+                } catch(err) {
+                    throw new Error(`this error occured attempting to remove the user: ${ err. message }`)
+                }
+            }
+        },        
         createPost: {
             type: PostType,
             args: {
@@ -164,6 +203,40 @@ const Mutation = new GraphQLObjectType({
                 return post.save()
             }
         },  
+        updatePost : {
+            type: PostType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) },
+                comment: { type: new GraphQLNonNull(GraphQLString) },
+                user_id: { type: new GraphQLNonNull(GraphQLID) },                
+            },
+            resolve: (parent, args) => {
+                return Post.findByIdAndUpdate(
+                    args.id, 
+                    { 
+                        $set: {
+                            comment: args.comment,
+                            user_id: args.user_id,
+                        }
+                    },
+                    { new: true } // send back the updated type
+                )                
+            }
+        },
+        removePost: {
+            type: PostType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)}
+            },
+            resolve: (parent, args) => {
+                try {
+                    let removed_post = Post.findByIdAndRemove(args.id)
+                    return removed_post
+                } catch(err) {
+                    throw new Error(`this error occured attempting to remove the post: ${ err. message }`)
+                }
+            }
+        },
         createHobby: {
             type: HobbyType,
             args: {
@@ -179,7 +252,43 @@ const Mutation = new GraphQLObjectType({
                 })
                 return hobby.save()
             }
-        },               
+        }, 
+        updateHobby: {
+            type: HobbyType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) },
+                title: { type: new GraphQLNonNull(GraphQLString) },
+                description: { type: new GraphQLNonNull(GraphQLString) },
+                user_id: { type: new GraphQLNonNull(GraphQLID) },                
+            },
+            resolve: (parent, args) => {
+                return Hobby.findByIdAndUpdate(
+                    args.id, 
+                    {
+                        $set: {
+                            title: args.title,
+                            description: args.description,
+                            user_id: args.user_id,
+                        }
+                    },
+                    { new: true },
+                )
+            }
+        }, 
+        removeHobby: {
+            type: HobbyType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)}
+            },
+            resolve: (parent, args) => {
+                try {
+                    let removed_hobby = Hobby.findByIdAndRemove(args.id)
+                    return removed_hobby
+                } catch(err) {
+                    throw new Error(`this error occured attempting to remove the hobby: ${ err. message }`)
+                }
+            }
+        },                     
     },
 })
 
