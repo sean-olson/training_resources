@@ -230,7 +230,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve: (parent, args) => {
                 try {
-                    let removed_post = Post.findByIdAndRemove(args.id)
+                    let removed_post = Post.findByIdAndRemove(args.id).exec()
                     return removed_post
                 } catch(err) {
                     throw new Error(`this error occured attempting to remove the post: ${ err. message }`)
@@ -282,7 +282,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve: (parent, args) => {
                 try {
-                    let removed_hobby = Hobby.findByIdAndRemove(args.id)
+                    let removed_hobby = Hobby.findByIdAndRemove(args.id).exec()
                     return removed_hobby
                 } catch(err) {
                     throw new Error(`this error occured attempting to remove the hobby: ${ err. message }`)
